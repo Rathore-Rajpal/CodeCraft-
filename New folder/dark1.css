@@ -1,0 +1,446 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-size: cover;
+    background-color: black;
+}
+.container{
+    position: fixed;
+    width:100%;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+}
+.left, .right{
+    flex-basis: 50%;
+    padding: 5%;
+}
+textarea{
+    width: 120%;
+    height: 32%;
+    font-size: 20px;
+    background: white;
+    color: rgb(190, 33, 33);
+    padding: 20px 20px;
+    border: 10px;
+    border-color: rgb(249, 242, 242);
+    opacity: 0.5;
+}
+iframe{
+    width: 110%;
+    height: 100%;
+    background:white;
+    border: 10px;
+    border-color: black;
+    outline: 0;
+    opacity: 0.5;
+}
+label i{
+    margin-left: 10px;
+    margin-right: 10px;
+    background: white;
+}
+label{
+    color:black;
+    display: flex;
+    align-items: center;
+    background: white;
+    height:  30px;
+    width: 120%;
+
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 13%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  
+
+}
+.navbar a{
+    position: relative;
+    font-size: 16px;
+    color: white;
+    margin-right: 30px;
+    text-decoration: none;
+}
+.navbar a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    bottom: -5px;
+    border-radius: 5px;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: .5s ease;
+}
+.navbar a:hover:after{
+    transform: translateY(0);
+    opacity: 1;
+}
+.search-bar{
+    width: 250px;
+    height: 45px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+.search-bar input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    padding-left: 10px;
+}
+.search-bar button{
+    width: 40px;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.search-bar input::placeholder{
+    color: #fff;
+}
+.search-bar button i{
+    font-size: 22px;
+}
+p{
+  font-size: 20px;
+color: white;
+position:absolute;
+top: 25px;
+left: 30px;
+border-width: 2px;
+}
+.xyz{
+    color:black;
+    display: flex;
+    align-items: center;
+    background: white;
+    height:  30px;
+    width: 110%;
+}
+#title{
+position:absolute;
+top: 35px;
+left: 850px;
+}
+
+/* CSS */
+.button-851 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: black;
+  background-color: rgb(202, 18, 18);
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  position:absolute;
+    top: 690px;
+    left: 875px; 
+}
+
+.button-851:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-851:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+.button-852 {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: black;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    position:absolute;
+      top: 690px;
+      left: 1090px; 
+  }
+  
+  .button-852:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing-button-85 {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  .button-852:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+              
+  .button-853 {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: black;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    position:absolute;
+      top: 690px;
+      left: 1270px; 
+  }
+  
+  .button-853:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing-button-85 {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  .button-853:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  .typing-demo {
+    width: 19ch;
+    animation: typing 3s steps(30), blink .9s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 3em;
+    color: #f5f0f0;
+    font-size: 30px;
+    position:absolute;
+    top: 20px;
+    left: 980px; 
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+
+
+/*@media (min aspect-ratio: 16/9){
+    .back-video{
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max aspect-ratio: 16/9){
+    .back-video{
+        width: auto;
+        height: 100%;
+    }
+}*/
+#display{
+  position:absolute;
+  left:1400px;
+  top:20px;
+}
+#butt{
+  position:absolute;
+  left: 1380px;
+  top: 50px;
+}
+.button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-items:center;
+}
+.button:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+.boxi{
+max-width: 400px;
+margin: 50px auto;
+background-color: #1817175c;
+backdrop-filter: blur(10px);
+padding: 10px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+color:rgb(241, 227, 227);
+position:absolute;
+  left: 970px;
+  top: -35px;
+}
+    
+
+      
+
+                
+    
+    
+    

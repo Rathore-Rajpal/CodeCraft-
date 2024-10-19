@@ -1,0 +1,92 @@
+body {
+    font-family: 'Times New Roman', serif;
+    background: url(12.jpg) no-repeat;
+    background-size: cover;
+
+}
+h1{
+    color:#fff;
+}
+label{
+    color: white;
+}
+input{
+    
+    color:white;
+    background-color: #c52585;
+}
+textarea{
+    color:white;
+    background: #c52585;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.rating{
+    position: absolute;
+    top: 315px;
+    left: 15px;   
+    font-size: 20px;  
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+    position: absolute;
+    top: 345px;
+    left: 5px;    
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:40px;
+    color:#ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.abc{
+    position: absolute;
+    top: 420px;
+    left: 20px;   
+    font-size: 20px;  
+}
+.abc input{
+   padding:20px;   
+    font-size: 20px;  
+}
+.container{
+    background-color: #1211115c;
+    backdrop-filter: blur(10px);
+    height: 500px;
+    width: 650px !important;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

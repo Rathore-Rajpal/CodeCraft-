@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d01fd9c369.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="stylescl.css"/>
+    <title>CodeCraft Classic</title>
+    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+   
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fa-solid fa-bug"></i>&nbsp;&nbsp;CodeCraft!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/loginsystem/welcome1.php"><i class="fa-solid fa-house"></i> Home</a>
+                </li>&nbsp;&nbsp;
+                
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/loginsystem/snips.html" target="_blank"> <i class="fa-solid fa-sheet-plastic"></i> Code Snippets</a>
+                </li>&nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/loginsystem/classic.html" target="_blank"><i class="fa-brands fa-codepen"></i> Default Theme</a>
+                </li>&nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/loginsystem/classiclight.html" target="_blank"> <i class="fa-solid fa-sun"></i> Light Theme</a>
+                </li>&nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="nav-link active" href="/loginsystem/New folder/default.php" target="_blank"> <i class="fa-solid fa-code"></i> Default Mode</a>
+                </li>&nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="nav-link active" href="/loginsystem/profile.php"> <i class="fa-solid fa-user"></i> Profie</a>
+                </li>&nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/loginsystem/logout.php"><i class="fa-solid fa-heart-crack"></i> Logout</a>
+                </li>&nbsp;&nbsp;
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="mainarea">
+    <div class="editors">
+        <h2><i class="fa-brands fa-html5"></i> HTML</h2>
+        <textarea id="html" onkeyup="run()" placeholder="html"></textarea>
+        <button class="button-71" onclick="downloadText('html')"><i class="fa-solid fa-download"></i> HTML</button>
+    </div>
+    <div class="editors">
+        <h2><i class="fa-brands fa-css3-alt"></i> CSS</h2>
+        <textarea id="css" placeholder="css"></textarea>
+        <button class="button-71" onclick="downloadText('css')"><i class="fa-solid fa-download"></i> CSS</button>
+    </div>
+    <div class="editors">
+        <h2> <i class="fa-brands fa-js"></i> JavaScript</h2>
+        <textarea id="js" onkeyup="run()" placeholder="js"></textarea>
+        <button class="button-71" onclick="downloadText('js')"><i class="fa-solid fa-download"></i> JAVASCRIPT</button>
+    </div>
+</div>
+<div class="boxi">
+    <div id="charCount">Total Characters Typed: 0</div>
+    <!-- Stopwatch -->
+    <div class="stopwatch">
+        <p id="display">00:00:00</p>
+        <button class="button" onclick="resetStopwatch()">Reset</button>
+    </div>
+    <!-- Average Typing Speed -->
+    <div id="averageSpeed">Average Typing Speed: 0 characters per minute</div>
+</div>
+<br>
+<div class="output">
+    <h3><i class="fa-solid fa-circle-play"></i> OUTPUT</h3>
+    <iframe id="code"></iframe>
+</div>
+<script type="text/javascript" src="apps.js"></script>
+<script>
+    let timer;
+    let typingTimeout;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+
+    function startStopwatch() {
+        if (!timer) {
+            timer = setInterval(runTimer, 1000);
+        }
+    }
+
+    function runTimer() {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes === 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+        displayTime();
+    }
+
+    function displayTime() {
+        let display = document.getElementById('display');
+        display.textContent = (hours < 10 ? "0" + hours : hours) + ":" +
+            (minutes < 10 ? "0" + minutes : minutes) + ":" +
+            (seconds < 10 ? "0" + seconds : seconds);
+    }
+
+    function resetStopwatch() {
+        clearInterval(timer);
+        timer = null;
+        hours = minutes = seconds = 0;
+        displayTime();
+    }
+
+    function run() {
+        clearTimeout(typingTimeout);
+        startStopwatch();
+
+        typingTimeout = setTimeout(() => {
+            clearInterval(timer);
+            timer = null;
+            calculateAverageSpeed();
+        }, 1000);
+    }
+
+    function downloadText(areaId) {
+        let content = document.getElementById(areaId).value;
+        let blob = new Blob([content], { type: "text/plain" });
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = areaId + ".txt";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    function calculateAverageSpeed() {
+        let totalCharacters = getTotalCharactersTyped();
+        let totalTimeInMinutes = getTotalTimeInMinutes();
+        let averageSpeed = totalCharacters / totalTimeInMinutes;
+        document.getElementById("averageSpeed").textContent = "Average Typing Speed: " + averageSpeed.toFixed(2) + " characters per minute";
+    }
+
+    function getTotalCharactersTyped() {
+        let htmlCode = document.getElementById("html").value;
+        let cssCode = document.getElementById("css").value;
+        let jsCode = document.getElementById("js").value;
+        return htmlCode.length + cssCode.length + jsCode.length;
+    }
+
+    function getTotalTimeInMinutes() {
+        let totalSeconds = hours * 3600 + minutes * 60 + seconds;
+        return totalSeconds / 60;
+    }
+    function countCharacters() {
+                let htmlCode = document.getElementById("html").value;
+                let cssCode = document.getElementById("css").value;
+                let jsCode = document.getElementById("js").value;
+    
+                // Calculate total characters
+                let totalCharacters = htmlCode.length + cssCode.length + jsCode.length;
+    
+                // Display total characters count
+                document.getElementById("charCount").textContent = "Total Characters Typeds: " + totalCharacters;
+            }
+    
+            // Call countCharacters function whenever there's a keyup event in any of the text areas
+            document.getElementById("html").addEventListener("keyup", countCharacters);
+            document.getElementById("css").addEventListener("keyup", countCharacters);
+            document.getElementById("js").addEventListener("keyup", countCharacters);
+            function downloadText(areaId) {
+                let content = document.getElementById(areaId).value;
+                let blob = new Blob([content], { type: "text/plain" });
+                let url = URL.createObjectURL(blob);
+                let a = document.createElement('a');
+                a.href = url;
+                a.download = areaId + ".txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+</script>
+</body>
+</html>

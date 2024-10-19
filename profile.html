@@ -1,0 +1,153 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
+    header("location: login.php");
+    exit;
+    <?php
+
+?>
+
+?>
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        background: url("1.jpg");
+        background-size: cover;
+    }
+    .navbar {
+        background-color: #333;
+        overflow: hidden;
+    }
+    .navbar-brand {
+        float: left;
+        font-size: 24px;
+        color: #fff;
+        padding: 15px 20px;
+        text-decoration: none;
+    }
+    .navbar-brand:hover {
+        background-color: #f0c56a;
+    }
+    .navbar-options {
+        float: right;
+    }
+    .navbar-options a {
+        display: inline-block;
+        color: #fff;
+        text-align: center;
+        padding: 15px 20px;
+        text-decoration: none;
+    }
+    .navbar-options a:hover {
+        background-color: #f0c56a;
+    }
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #e1e6eb;
+        text-align: center; /* Center align content */
+    }
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 20px; /* Adjust margin */
+    }
+    .username {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    .user-info {
+        margin-bottom: 20px; /* Adjust margin */
+    }
+    label {
+        font-weight: bold;
+    }
+    #profile-picture-input {
+        display: none;
+    }
+    #upload-button {
+        display: block;
+        width: 150px;
+        margin: 0 auto;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 20px; /* Adjust margin */
+    }
+</style>
+</head>
+<body>
+<div class="navbar">
+    <a href="#" class="navbar-brand">Brand Name</a>
+    <div class="navbar-options">
+        <a href="#">Home Page</a>
+        <a href="#">Editor</a>
+        <a href="#">Logout</a>
+    </div>
+</div>
+<div class="container">
+    <img class="profile-picture" src="default_profile_picture.jpg" alt="Profile Picture" id="profile-picture">
+    <button id="upload-button">Upload Picture</button>
+    <input type="file" accept="image/*" id="profile-picture-input" onchange="previewPicture(event)">
+    <div class="username"><?php echo $_SESSION['username']?></div>
+    <div class="user-info">
+        <div>
+            <label for="fname">First Name:</label>
+            <span id="fname"><?php echo $_SESSION['fname']?></span>
+        </div>
+        <div>
+            <label for="lname">Last Name:</label>
+            <span id="lname"><?php echo $_SESSION['lname']?></span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <span id="email">johndoe@example.com</span>
+        </div>
+    </div>
+</div>
+<script>
+    // Check if profile picture data exists in local storage
+    var profilePictureData = localStorage.getItem('profilePictureData');
+    if (profilePictureData) {
+        document.getElementById('profile-picture').src = profilePictureData;
+    }
+
+    function previewPicture(event) {
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var profilePicture = document.getElementById('profile-picture');
+            profilePicture.src = reader.result;
+
+            // Store profile picture data in local storage
+            localStorage.setItem('profilePictureData', reader.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    document.getElementById('upload-button').onclick = function () {
+        document.getElementById('profile-picture-input').click();
+    };
+</script>
+</body>
+</html>

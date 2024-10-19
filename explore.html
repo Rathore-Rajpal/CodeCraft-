@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d01fd9c369.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styleexplo.css">
+    <title>CodeCraft! Explore</title>
+    <link rel="icon" type = "image/x-icon" href="favicon-32x32.png">
+</head>
+<body>
+    <h1><i class="fa-solid fa-bug"></i> CodeCraft Themes!</h1>
+    <div class="box">
+    <video autoplay loop muted plays-inline class="back-video">
+        <source src="THemess.mp4" type="video/mp4" >
+    </video>
+</div>
+   
+    <div class="wrapper">
+        <h2>Choose your theme...<i class="fa-solid fa-moon"></i> <i class="fa-solid fa-sun"></i></h2>
+        <div class="container">
+            <input type="radio" name="slide" id="c1" checked>
+            <label for="c1" class="card">
+                <div class="row">
+                    <div class="icon">1</div>
+                    <div class="description">
+                        <h4><a href="/loginsystem/New folder/default.php">Default Mode</a></h4>
+                        <p>Your basic Editor</p>
+                                
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c2" >
+            <label for="c2" class="card">
+                <div class="row">
+                    <div class="icon">2</div>
+                    <div class="description">
+                        <h4><a href="/loginsystem/New folder/dark.php">Default Dark Mode</a></h4>
+                        <p>Useful to work in Night</p>
+                         
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c3" >
+            <label for="c3" class="card">
+                <div class="row">
+                    <div class="icon">3</div>
+                    <div class="description">
+                        <h4><a href="/loginsystem/New folder/light.php">Default Light Mode</a></h4>
+                        <p>Useful to work in Day</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c4" >
+            <label for="c4" class="card">
+                <div class="row">
+                    <div class="icon">4</div>
+                    <div class="description">
+                        <h4><a href="classic.html">Classic Mode</a></h4>
+                        <p>Offers Larger Output Screen</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c5" >
+            <label for="c5" class="card">
+                <div class="row">
+                    <div class="icon">5</div>
+                    <div class="description">
+                        <h4><a href="classicdark.html">Classic Dark Mode</a></h4>
+                        <p>Offers Larger Output Screen..better for low-light</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c6">
+            <label for="c6" class="card">
+                <div class="row">
+                    <div class="icon">6</div>
+                    <div class="description">
+                        <h4><a href="classiclight.html">Classic Light Mode</a></h4>
+                        <p>Offers Larger Output Screen..better for Day-light</p>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <button class="go-back-btn" onclick="goBack()">Go Back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
+</body>
+</html>

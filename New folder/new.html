@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Copy Textbox Value</title>
+    <script>
+        function copyText() {
+            // Get the value from the source textbox
+            var sourceText = document.getElementById("sourceTextbox").value;
+            
+            // Set the value to the destination textbox
+            document.getElementById("destinationTextbox").value = sourceText;
+        }
+    </script>
+</head>
+<body>
+    <h2>Copy Textbox Value</h2>
+    <label for="sourceTextbox">Source Textbox:</label>
+    <input type="text" id="sourceTextbox" placeholder="Enter text here"><br><br>
+    
+    <label for="destinationTextbox">Destination Textbox:</label>
+    <input type="text" id="destinationTextbox" placeholder="Copied text will appear here"><br><br>
+    
+    <button onclick="copyText()">Copy Text</button>
+</body>
+</html>

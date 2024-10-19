@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d01fd9c369.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>CodeCraft! Snippets</title>
+    <link rel="icon" type = "image/x-icon" href="favicon-32x32.png">
+<style>
+    body {
+        margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', serif;
+            background: url(12.jpg) no-repeat;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+    }
+    .snippet-container {
+    max-width: 1000px; /* Adjust the max-width as needed */
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    .section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.snippet {
+    width: calc(33.33% - 10px); /* Adjust the width as needed */
+    margin-bottom: 20px;
+    margin-right: 10px;
+    transition: transform 0.5s ease; /* Smooth transition for the hover effect */
+}
+
+.snippet:hover {
+    transform: scale(1.08); /* Scale the snippet on hover */
+}
+
+.snippet:nth-child(3n) {
+    margin-right: 0; /* Remove margin-right for every third snippet to align them properly */
+}
+.snippet textarea {
+    width: 300px;
+    height: 150px; /* Increased height for better readability */
+    margin-bottom: 10px;
+    resize: none;
+    background-color: #282c34; /* VS Code background color */
+    color: #abb2bf; /* VS Code text color */
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px; /* Added padding for spacing between text and border */
+    font-family: 'Fira Code', monospace; /* Use a monospace font for code */
+    font-size: 14px; /* Adjust font size as needed */
+    line-height: 1.5;
+    border-radius: 9px; /* Adjust line height for better readability */
+}
+
+    .snippet .btn-group {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .copy-btn, .edit-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .copy-btn:hover, .edit-btn:hover {
+        background-color: #0056b3;
+    }
+    .btn-group {
+        margin-top: 10px;
+    }
+    .btn-group button {
+        margin-right: 10px;
+    }
+    .copy-message {
+        position: absolute;
+        background-color: rgba(0, 123, 255, 0.9);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        display: none;
+        bottom: calc(100% + 10px); /* Positioning */
+        left: 50%;
+        transform: translateX(-50%);
+        transition: opacity 0.3s ease-in-out; /* Added for faster transition */
+    }
+    
+    
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><i class="fa-solid fa-bug"></i>&nbsp;&nbsp;CodeCraft!</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/loginsystem/welcome1.php"> <i class="fa-solid fa-house"></i> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/loginsystem/New folder/default.php"> <i class="fa-solid fa-code"></i> Editor!</a>
+             </li>
+            </ul>
+           
+          </div>
+        </div>
+        </nav>
+<div class="snippet-container">
+    <!-- HTML Code Snippets -->
+    <div class="section">
+        <div class="snippet">
+            <textarea readonly>&lt;h1&gt;Hello World!&lt;/h1&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage">Code Copied to Clipboard</div>
+        </div>
+        <div class="snippet">
+            <textarea readonly>&lt;div&gt;This is a div&lt;/div&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage3">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 4 -->
+        <div class="snippet">
+            <textarea readonly>&lt;a href="#"&gt;Link&lt;/a&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage4">Code Copied to Clipboard</div>
+        </div>
+        <!-- Add more snippets here -->
+        <!-- Snippet 5 -->
+        <div class="snippet">
+            <textarea readonly>&lt;img src="image.jpg" alt="Image"&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage5">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 6 -->
+        <div class="snippet">
+            <textarea readonly>&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;li&gt;Item 2&lt;/li&gt;&lt;/ul&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage6">Code Copied to Clipboard</div>
+        </div>
+        <!-- Add more snippets here -->
+        <!-- Snippet 7 -->
+        <div class="snippet">
+            <textarea readonly>&lt;form&gt;&lt;input type="text" name="name"&gt;&lt;button type="submit"&gt;Submit&lt;/button&gt;&lt;/form&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage7">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 8 -->
+        <div class="snippet">
+            <textarea readonly>&lt;table&gt;&lt;tr&gt;&lt;td&gt;Cell 1&lt;/td&gt;&lt;td&gt;Cell 2&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage8">Code Copied to Clipboard</div>
+        </div>
+        <!-- Add more snippets here -->
+        <!-- Snippet 9 -->
+        <div class="snippet">
+            <textarea readonly>&lt;header&gt;Header&lt;/header&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage9">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 10 -->
+        <div class="snippet">
+            <textarea readonly>&lt;footer&gt;Footer&lt;/footer&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage10">Code Copied to Clipboard</div>
+        </div>
+        <div class="snippet">
+            <textarea readonly>&lt;nav&gt;&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;li&gt;Item 2&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage11">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 12 -->
+        <div class="snippet">
+            <textarea readonly>&lt;article&gt;&lt;p&gt;This is an article.&lt;/p&gt;&lt;/article&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage12">Code Copied to Clipboard</div>
+        </div>
+        <!-- Add more snippets here -->
+        <!-- Snippet 13 -->
+        <div class="snippet">
+            <textarea readonly>&lt;aside&gt;&lt;p&gt;This is an aside.&lt;/p&gt;&lt;/aside&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage13">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 14 -->
+        <div class="snippet">
+            <textarea readonly>&lt;section&gt;&lt;p&gt;This is a section.&lt;/p&gt;&lt;/section&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage14">Code Copied to Clipboard</div>
+        </div>
+        <!-- Add more snippets here -->
+        <!-- Snippet 15 -->
+        <div class="snippet">
+            <textarea readonly>&lt;footer&gt;&lt;p&gt;This is a footer.&lt;/p&gt;&lt;/footer&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage15">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 16 -->
+        <div class="snippet">
+            <textarea readonly>&lt;button&gt;Click Me&lt;/button&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage16">Code Copied to Clipboard</div>
+        </div>
+        <!-- Add more snippets here -->
+        <!-- Snippet 17 -->
+        <div class="snippet">
+            <textarea readonly>&lt;span&gt;Text&lt;/span&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage17">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 18 -->
+        <div class="snippet">
+            <textarea readonly>&lt;div class="container"&gt;&lt;p&gt;Content&lt;/p&gt;&lt;/div&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage18">Code Copied to Clipboard</div>
+        </div>
+        <!-- Add more snippets here -->
+        <!-- Snippet 19 -->
+        <div class="snippet">
+            <textarea readonly>&lt;img src="image.jpg" alt="Image"&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage19">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 20 -->
+        <div class="snippet">
+            <textarea readonly>&lt;p&gt;Paragraph&lt;/p&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage20">Code Copied to Clipboard</div>
+        </div>
+        <div class="snippet">
+            <textarea readonly>.container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage3">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 4 -->
+        <div class="snippet">
+            <textarea readonly>.btn {
+        background-color: #007bff;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage4">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 5 -->
+        <div class="snippet">
+            <textarea readonly>.text-center {
+        text-align: center;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage5">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 6 -->
+        <div class="snippet">
+            <textarea readonly>.border {
+        border: 1px solid #ccc;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage6">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 7 -->
+        <div class="snippet">
+            <textarea readonly>.bg-gray {
+        background-color: #f4f4f4;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage7">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 8 -->
+        <div class="snippet">
+            <textarea readonly>.text-bold {
+        font-weight: bold;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage8">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 9 -->
+        <div class="snippet">
+            <textarea readonly>.hover-effect {
+        transition: color 0.3s ease;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage9">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 10 -->
+        <div class="snippet">
+            <textarea readonly>.flex-container {
+        display: flex;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage10">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 11 -->
+        <div class="snippet">
+            <textarea readonly>.justify-center {
+        justify-content: center;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage11">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 12 -->
+        <div class="snippet">
+            <textarea readonly>.align-center {
+        align-items: center;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage12">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 13 -->
+        <div class="snippet">
+            <textarea readonly>.margin-10 {
+        margin: 10px;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage13">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 14 -->
+        <div class="snippet">
+            <textarea readonly>.padding-10 {
+        padding: 10px;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage14">Code Copied to Clipboard</div>
+        </div>
+        <!-- Snippet 15 -->
+        <div class="snippet">
+            <textarea readonly>.text-italic {
+        font-style: italic;
+    }</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage15">Code Copied to Clipboard</div>
+    
+            <!-- Add more CSS snippets as needed -->
+        </div>
+    
+        <!-- JavaScript Code Snippets -->
+
+            <div class="snippet">
+                <textarea readonly>console.log('Hello World!');</textarea>
+                <div class="btn-group">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+                </div>
+                <div class="copy-message" id="copyMessage">Code Copied to Clipboard</div>
+            </div>
+            <div class="snippet">
+        <textarea readonly>alert('This is an alert!');</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage2">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 3 -->
+    <div class="snippet">
+        <textarea readonly>function greet(name) {
+        console.log('Hello, ' + name + '!');
+    }</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage3">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 4 -->
+    <div class="snippet">
+        <textarea readonly>function add(a, b) {
+        return a + b;
+    }</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage4">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 5 -->
+    <div class="snippet">
+        <textarea readonly>var x = 5;
+    var y = 10;
+    var z = x + y;</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage5">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 6 -->
+    <div class="snippet">
+        <textarea readonly>var fruits = ['Apple', 'Banana', 'Orange'];</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage6">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 7 -->
+    <div class="snippet">
+        <textarea readonly>var person = {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30
+    };</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage7">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 8 -->
+    <div class="snippet">
+        <textarea readonly>for (var i = 0; i &lt; 5; i++) {
+        console.log('Number: ' + i);
+    }</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage8">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 9 -->
+    <div class="snippet">
+        <textarea readonly>var date = new Date();
+    console.log(date);</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage9">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 10 -->
+    <div class="snippet">
+        <textarea readonly>var randomNumber = Math.random();
+    console.log(randomNumber);</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage10">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 11 -->
+    <div class="snippet">
+        <textarea readonly>var colors = ['Red', 'Green', 'Blue'];
+    console.log(colors.length);</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage11">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 12 -->
+    <div class="snippet">
+        <textarea readonly>var text = 'Hello World!';
+    console.log(text.toUpperCase());</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage12">Code Copied to Clipboard</div>
+    </div>
+    <!-- Snippet 13 -->
+    <div class="snippet">
+        <textarea readonly>var num = 10;
+    console.log(num.toString());</textarea>
+        <div class="btn-group">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+        </div>
+        <div class="copy-message" id="copyMessage13">Code Copied to Clipboard</div>
+    </div>
+        
+        <div class="snippet">
+            <textarea readonly>&lt;p&gt;Lorem ipsum dolor sit amet&lt;/p&gt;</textarea>
+            <div class="btn-group">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <button class="edit-btn" onclick="editSnippet(this)">Edit</button>
+            </div>
+            <div class="copy-message" id="copyMessage2">Code Copied to Clipboard</div>
+        </div>
+        <!-- Add more snippets here -->
+    </div>
+
+    <!-- CSS Code Snippets -->
+    
+    
+    
+    <!-- Add more snippets here -->
+    </div>
+</div>
+<script>
+    function copyToClipboard(button) {
+        var textarea = button.parentElement.previousElementSibling;
+        textarea.select();
+        document.execCommand("copy");
+        var copyMessage = textarea.parentElement.querySelector('.copy-message');
+        copyMessage.style.display = 'block';
+        setTimeout(function() {
+            copyMessage.style.opacity = '0';
+        }, 1500);
+    }
+
+    function editSnippet(button) {
+        var textarea = button.parentElement.previousElementSibling;
+        textarea.readOnly = !textarea.readOnly;
+        if (textarea.readOnly) {
+            button.innerText = 'Edit';
+        } else {
+            button.innerText = 'Save';
+        }
+    }
+</script>
+</body>
+</html>
